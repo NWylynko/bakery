@@ -1,0 +1,3 @@
+
+
+unfortunately I can not see a good way to make this service scalable. We only want events to fire once in to kafka and this state needs to be stored somewhere. The solution is to use redis, then lock the firing of events so an individual instance can attempt to fire off the event, then unlock the event. This scheduler service is my attempt at a simple replication of googles Cloud Scheduler, as I want to try and get everything running locally. In the real world I would use a service like Cloud Scheduler to fire off the events, I believe it has an emulator that could be used for local development.
