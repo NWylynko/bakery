@@ -63,3 +63,35 @@ For now I am going to create a Users service, but in an event driven way. That m
 ## Which package manager should we use
 
 Initially I wanted to use PNPM as I have heard good things and seems to run nice and fast. However, Turborepo does not support the `prune` command with PNPM, which we need to create docker builds. So I will now try to use Yarn, the issue is I don't know if I should use version 1, 2 or 3 of Yarn.
+
+# Setup and Run
+
+1. clone the repo
+2. run `yarn`
+3. run `yarn dev` for development
+4. run `yarn start` for production
+
+## Adding a new service / app
+
+1. Create a new folder in either `apps/`, `services/` (in lowercase)
+2. run `yarn init` inside the folder
+3. run `yarn add` to install all the packages you need
+4. add the script `build` to the package.json, if there is no build step just put `echo "no build step"`
+5. add the script `start` this needs to start the app or service (for production)
+6. add the script `dev` this needs to start the app or service with hot-reload (for development)
+7. open `docker-compose.prod.yaml` and add the new service / app to the `services` section
+   1. the context needs to `.` so it can use the turbo.json and package.json in the root
+   2. set the dockerfile to the `Dockerfile.prod` to build for production
+   3. for the args
+      1. set `DIRECTORY` to either `apps/` or `services/` plus the name of the folder you created at the start
+      2. set `SCOPE` to the name in the package.json of the service or app
+   4. add ports so you can connect to the app or service
+8. open `docker-compose.dev.yaml` and copy over the service from the prod file
+   1. change the dockerfile to the `Dockerfile.dev` to build for development
+   2. add some volumes
+      1. sync the node_modules folder to the docker container, so if you install another package it will be available
+      2. sync the service / app folder to the docker container, so if you change the code it will be available
+
+
+## Adding a new package
+

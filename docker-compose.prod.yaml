@@ -4,9 +4,9 @@ services:
   users:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
       args:
-        DIRECTORY: services/Users
-        SCOPE: users
+        DIRECTORY: services/users
+        SCOPE: "@bakery/users"
     ports:
       - 4001:4000
