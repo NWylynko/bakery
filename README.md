@@ -95,3 +95,11 @@ Initially I wanted to use PNPM as I have heard good things and seems to run nice
 
 ## Adding a new package
 
+1. Create a new folder in `packages/` (in lowercase)
+2. run `yarn init` inside the folder
+3. run `yarn add` to install all the packages you need
+4. add the script `build` to the package.json, if there is no build step just put `echo "no build step"`
+5. add `"main": "dist/index.js",` to the package.json pointing to the entry point (or build output)
+6. in any packages / services / apps that use the package, manually add the package to the dependencies in the package.json with the version as "*"
+   1. eg `"@bakery/hello": "*`
+
