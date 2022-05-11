@@ -2,6 +2,7 @@
   "name": "bakery",
   "version": "0.0.1",
   "description": "A collection of decoupled serverless microservices modelled off a bakery using event driven architecture.",
+  "private": true,
   "scripts": {},
   "keywords": [],
   "author": "Nick Wylynko",

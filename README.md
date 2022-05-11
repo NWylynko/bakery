@@ -59,3 +59,7 @@ How this goes on under the hood only needs to be as complicated as necessary to 
 - Requires duplication of information. If following event driven, both the main service that is effected by an event and the user service would need to store details about a user potentially.
 
 For now I am going to create a Users service, but in an event driven way. That means that if any of the other services require some data on a user, it is there responsibility to store that data. But the Users service will consume as many events as it can and store as much information on users as possible in a NoSQL database, without any kind of relations. On a page that displays user data, the can get the id from the Users service and then go to the service that is storing that data and get the details.
+
+## Which package manager should we use
+
+Initially I wanted to use PNPM as I have heard good things and seems to run nice and fast. However, Turborepo does not support the `prune` command with PNPM, which we need to create docker builds. So I will now try to use Yarn, the issue is I don't know if I should use version 1, 2 or 3 of Yarn.
