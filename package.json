@@ -1,0 +1,17 @@
+{
+  "name": "bakery",
+  "version": "0.0.1",
+  "description": "A collection of decoupled serverless microservices modelled off a bakery using event driven architecture.",
+  "scripts": {},
+  "keywords": [],
+  "author": "Nick Wylynko",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "services/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "turbo": "^1.2.8"
+  }
+}
