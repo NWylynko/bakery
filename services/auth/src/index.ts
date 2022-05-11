@@ -3,7 +3,7 @@ import Fastify from "fastify";
 const app = Fastify({ logger: true });
 
 app.get("/", async () => {
-  return { message: "Hello World: users" };
+  return { message: "Hello World: auth" };
 })
 
 const main = async () => {

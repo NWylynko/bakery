@@ -1,13 +1,16 @@
 {
-  "name": "@bakery/hello",
+  "name": "@bakery/auth",
   "version": "0.0.1",
-  "description": "async function that returns hello world",
+  "description": "JWT based authentication service",
   "main": "dist/index.js",
-  "source": "dist/index.ts",
-  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "fastify": "^3.29.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",

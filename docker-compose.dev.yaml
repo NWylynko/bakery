@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+
   users:
     build:
       context: .
@@ -13,3 +14,16 @@ services:
     volumes:
       - ./node_modules:/app/node_modules
       - ./services/users:/app/services/users
+
+  auth:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        DIRECTORY: services/auth
+        SCOPE: "@bakery/auth"
+    ports:
+      - 4002:4000
+    volumes:
+      - ./node_modules:/app/node_modules
+      - ./services/auth:/app/services/auth

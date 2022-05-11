@@ -9,7 +9,6 @@
     "dev": "nodemon src/index.ts"
   },
   "dependencies": {
-    "@bakery/hello": "*",
     "fastify": "^3.29.0"
   },
   "devDependencies": {
