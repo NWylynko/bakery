@@ -21,3 +21,13 @@ services:
         SCOPE: "@bakery/auth"
     ports:
       - 4002:4000
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        DIRECTORY: services/scheduler
+        SCOPE: "@bakery/scheduler"
+    ports:
+      - 4003:4000

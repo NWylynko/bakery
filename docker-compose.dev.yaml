@@ -27,3 +27,16 @@ services:
     volumes:
       - ./node_modules:/app/node_modules
       - ./services/auth:/app/services/auth
+
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        DIRECTORY: services/scheduler
+        SCOPE: "@bakery/scheduler"
+    ports:
+      - 4003:4000
+    volumes:
+      - ./node_modules:/app/node_modules
+      - ./services/scheduler:/app/services/scheduler

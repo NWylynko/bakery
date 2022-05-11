@@ -1,7 +1,7 @@
 {
-  "name": "@bakery/auth",
+  "name": "@bakery/scheduler",
   "version": "0.0.1",
-  "description": "JWT based authentication service",
+  "description": "service that fires off events on a schedule to kafka, to be consumed by other services",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
