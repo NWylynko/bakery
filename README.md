@@ -64,6 +64,10 @@ For now I am going to create a Users service, but in an event driven way. That m
 
 Initially I wanted to use PNPM as I have heard good things and seems to run nice and fast. However, Turborepo does not support the `prune` command with PNPM, which we need to create docker builds. So I will now try to use Yarn, the issue is I don't know if I should use version 1, 2 or 3 of Yarn.
 
+## Why is the auth service not using kafka on register and login?
+
+My concern with using kafka to do authentication is security. Obviously we don't want to store users passwords in plain text in a kafka topic. However, I don't know if there is a way to do this without storing the password in plain text. I believe the solution to this is to salt & hash the password first then pass it with the username to the kafka topic. I may re-visit this but for now I will just store it directly in a mongo database first, then fire off the register event to kafka for other services to listen on.
+
 # Setup and Run
 
 1. clone the repo

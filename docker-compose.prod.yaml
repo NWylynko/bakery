@@ -3,7 +3,7 @@ version: "3"
 services:
 
   zookeeper-1:
-    image: confluentinc/cp-zookeeper:latest
+    image: confluentinc/cp-zookeeper:6.2.4
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -11,7 +11,7 @@ services:
       - 22181:2181
 
   zookeeper-2:
-    image: confluentinc/cp-zookeeper:latest
+    image: confluentinc/cp-zookeeper:6.2.4
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -19,7 +19,7 @@ services:
       - 32181:2181
   
   kafka-1:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:6.2.4
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -34,7 +34,7 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   kafka-2:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:6.2.4
     depends_on:
       - zookeeper-1
       - zookeeper-2
@@ -67,6 +67,15 @@ services:
         SCOPE: "@bakery/auth"
     ports:
       - 4002:4000
+    environment:
+      - KAFKA_BROKERS=["kafka-1:9092","kafka-2:9092"]
+      - MONGODB_URL=mongodb://root:example@auth-mongo:27017/
+
+  auth-mongo:
+    image: mongo:5.0.8
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
 
   scheduler:
     build:
